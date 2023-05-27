@@ -38,7 +38,7 @@ def generate_model():
 
 def get_net():
     # return MyModel(torchvision.models.resnet101(pretrained = True))
-    model = torchvision.models.resnet50(pretrained=True)
+    model = torchvision.models.mobilenet_v3_large(pretrained=True)
     # for param in model.parameters():
     #    param.requires_grad = False
     model.avgpool = nn.AdaptiveAvgPool2d(1)
