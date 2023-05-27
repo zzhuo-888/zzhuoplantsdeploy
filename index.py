@@ -72,13 +72,13 @@ def change_users(users,pd,fg):
         fg=1
     else:
         fg=2
-    c.execute(text('UPDATE userstable SET password =:pd,flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username'])))
-    c.commit()
+    conn.query('UPDATE userstable SET password =:pd,flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
+    #c.commit()
 
 def change_mail(users,number,mail):
     changemail={'username':users,'number':number,'mail':mail}
-    c.execute(text('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username'])))
-    c.commit()
+    conn.query('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
+    #c.commit()
     #data = c.fetchall()
     #print("数据111222是", data)
 
