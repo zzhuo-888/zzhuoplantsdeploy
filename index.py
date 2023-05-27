@@ -35,13 +35,15 @@ def login_user(username,password):
     fdata = [tuple(x) for x in data.values]
     #if fdata!='':
     if(len(fdata)!=0):
-        if fdata[0][0]!='2' and c.execute(text('SELECT username FROM userstable WHERE username =`username`;')):
+        if fdata[0][0]!='2' and len(conn.query('SELECT username FROM userstable WHERE username =`username`;'))!=0:
             data=conn.query('SELECT * FROM userstable WHERE username =`username`AND password = `password`;',ttl=600)
             #data=c.commit()
             data = [tuple(x) for x in data.values]
             return data
         else:
            st.warning("用户已进入黑名单，限制登录，详情请咨询管理员。")
+    else:
+        st.warning("没有该用户，请您先注册。")
 
 def view_all_users():
     data = conn.query('SELECT * from userstable;', ttl=600)
