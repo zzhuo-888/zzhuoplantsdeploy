@@ -20,10 +20,10 @@ def add_userdata(username, password, flag, number, mail):
     users = {'username': username, 'password': password, 'flag': flag, 'number': number, 'mail': mail}
     st.write(username)
     # c.execute(text('SELECT username FROM userstable WHERE username =`username`;'))
-    df = conn.query('SELECT * FROM userstable WHERE username ="{users[username]}";')
-    st.write(df)
+    # df = conn.query('SELECT * FROM userstable WHERE username ="{users[username]}";')
+    # st.write(df)
     c = conn.session
-    c.execute(text("SELECT * FROM usertable WHERE username = %(username)s;", username=username))
+    c.execute(text("SELECT * FROM usertable WHERE username = %s;", username=username))
     c.commit()
     return c
 
