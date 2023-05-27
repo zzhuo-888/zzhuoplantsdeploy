@@ -85,11 +85,10 @@ def change_mail(users,number,mail):
 
 def add_searchdata(username, datetimenow, plantname):
     searchs = {'username': username, 'datetime': datetimenow, 'plantname': plantname}
-    c.execute(text(
-            'INSERT INTO search(user,datatime,plantdname) VALUES(:username1,:datatime1,:plantdname1);'),
+    data=c.execute(text('INSERT INTO search(user,datatime,plantdname) VALUES(:username1,:datatime1,:plantdname1);'),
                   params=dict(username1=searchs['username'], password1=searchs['datetime'], flag1=searchs['plantname']))
     c.commit()
-
+    return data
 # Initialize connection.
 # Uses st.cache_resource to only run once.
 # userlist = [] # 存放所有的用户名
@@ -302,8 +301,8 @@ def main():
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
                             datetimenow = datetime.datetime.now()
                             datetimenow = f'{datetimenow}'.split('.')[0]
-                            # if dname1 !='None':
-                            #     add_searchdata(username, datetimenow, dname1)
+                            if dname1 !='None':
+                                add_searchdata(username, datetimenow, dname1)
                             #
 
                                 # st.warning(":sunny::sunny::sunny:已同步将您的农作物识别结果发送至您的邮箱，请注意查收。:sunny::sunny::sunny:")
