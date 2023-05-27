@@ -31,13 +31,12 @@ def add_userdata(username, password, flag, number, mail):
 
 
 def login_user(username,password):
-    c.execute(text('SELECT flag FROM userstable WHERE username =`username`;'))
-    fdata=c.commit()
-    #print("标志是",(fdata=='')
+    data=conn.query('SELECT flag FROM userstable WHERE username =`username`;',ttl=600)
+    fdata = [tuple(x) for x in data.values]
     #if fdata!='':
     if(len(fdata)!=0):
         if fdata[0][0]!='2' and c.execute(text('SELECT username FROM userstable WHERE username =`username`;')):
-            conn.query('SELECT * FROM userstable WHERE username =`username`AND password = `password`;',ttl=600)
+            data=conn.query('SELECT * FROM userstable WHERE username =`username`AND password = `password`;',ttl=600)
             #data=c.commit()
             data = [tuple(x) for x in data.values]
             return data
@@ -72,7 +71,7 @@ def change_users(users,pd,fg):
 
 def change_mail(users,number,mail):
     c.execute(text('UPDATE userstable SET number =`number`,mail=`mail`  WHERE username = `users`;'))
-    data=c.commit()
+    c.commit()
     #data = c.fetchall()
     #print("数据111222是", data)
 
@@ -700,9 +699,9 @@ def main():
         # # else:
         # #     cityip=[39.906497, 119.539445]
         #print(cityip)
-        list1=[]
-        list1.append(np.random.randn(10, 2) +[39.906497, 119.539445])
-        print(list1)
+        # list1=[]
+        # list1.append(np.random.randn(10, 2) +[39.906497, 119.539445])
+        # print(list1)
 
         map_data = pd.DataFrame([[39.906497,119.539445]],##随机np.random.randn(10, 2) +[39.906497, 119.539445],
             columns=['lat', 'lon'])
