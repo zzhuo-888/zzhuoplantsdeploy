@@ -86,7 +86,7 @@ def change_mail(users,number,mail):
 def add_searchdata(username, datetimenow, plantname):
     searchs = {'username': username, 'datetime': datetimenow, 'plantname': plantname}
     data=c.execute(text('INSERT INTO search(user,datatime,plantdname) VALUES(:username1,:datatime1,:plantdname1);'),
-                  params=dict(username1=searchs['username'], password1=searchs['datetime'], flag1=searchs['plantname']))
+                  params=dict(username1=searchs['username'], datatime1=searchs['datetime'], plantdname1=searchs['plantname']))
     c.commit()
     return data
 # Initialize connection.
@@ -304,23 +304,23 @@ def main():
                             if dname1 !='None':
                                 add_searchdata(username, datetimenow, dname1)
                             #
+                            for i in slove_data:
+                                st.warning(":sunny::sunny::sunny:已同步将您的农作物识别结果发送至您的邮箱，请注意查收。:sunny::sunny::sunny:")
 
-                                # st.warning(":sunny::sunny::sunny:已同步将您的农作物识别结果发送至您的邮箱，请注意查收。:sunny::sunny::sunny:")
-                                #
-                                # # print(i)
-                                # dinfo = i[2]
-                                # dsolve = i[3]
-                                # st.success(dinfo)
-                                # st.success(dsolve)
-                                #
-                                # datapess = {
-                                #     'sender': "2577982484@qq.com",  # 发送者邮箱，自己用可写死
-                                #     'password': "regdayyboktpeacc",  # 在开启SMTP服务后，可以生成授权码，此处为授权码
-                                #     'subject': "农作物健康识别系统",  # 邮件主题名，没有违规文字都行
-                                # }
-                                # # st.write("slider", slider_val, "checkbox", checkbox_val)
-                                # # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
-                                # load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
+                                # print(i)
+                                dinfo = i[2]
+                                dsolve = i[3]
+                                st.success(dinfo)
+                                st.success(dsolve)
+
+                                datapess = {
+                                    'sender': "2577982484@qq.com",  # 发送者邮箱，自己用可写死
+                                    'password': "regdayyboktpeacc",  # 在开启SMTP服务后，可以生成授权码，此处为授权码
+                                    'subject': "农作物健康识别系统",  # 邮件主题名，没有违规文字都行
+                                }
+                                # st.write("slider", slider_val, "checkbox", checkbox_val)
+                                # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
+                                load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
                         elif choice1=="识别记录查询":
                             # 其他用法和radio基本一致
                             allmanagedata1 = list(show_search())
