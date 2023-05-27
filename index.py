@@ -55,6 +55,7 @@ def show_slove(dname1):##病虫害信息及防治措施
     dname = {'dname': dname1}
     data=conn.query('SELECT * FROM information WHERE dname=:dname1;',params=dict(dname1=dname['dname']))
     data = [tuple(x) for x in data.values]
+    st.write(data)
     return data
 def show_search():##所有浏览记录
     data=conn.query('SELECT * FROM search;')
@@ -609,7 +610,7 @@ def main():
 
                     elif(logged_user[0][2]=='1' and shenfen=='管理员登录' or logged_user[0][2]=='0' and shenfen=='普通用户登录'):
 
-                        st.warning(":exclamation::exclamation::exclamation:您的身份选择有误，仅为您保留病虫害识别功能，其他功能请退出后重新选择身份查看！")
+                        st.warning(":exclamation::exclamation::exclamation:您的身份选择有误，请退出后重新选择身份查看！")
                     else:
                         st.warning(":exclamation::exclamation::exclamation:您已被限制登录，详情请联系管理员。")
 
