@@ -17,9 +17,9 @@ def baike1():
     if genre == "苹果植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/apple/')
+            imagelist = os.listdir('./baike/apple/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/apple/"
+            rootdir = "./baike/apple/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
     #LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -60,9 +60,9 @@ def baike1():
     elif genre == "玉米植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/corn/')
+            imagelist = os.listdir('./baike/corn/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/corn/"
+            rootdir = "./baike/corn/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -108,9 +108,9 @@ def baike1():
     elif genre == "樱桃植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/cherry/')
+            imagelist = os.listdir('./baike/cherry/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/cherry/"
+            rootdir = "./baike/cherry/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
     #LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -146,9 +146,9 @@ def baike1():
     elif genre == "葡萄植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/grape/')
+            imagelist = os.listdir('./baike/grape/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/grape/"
+            rootdir = "./baike/grape/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -195,9 +195,9 @@ def baike1():
     elif genre == "柑桔植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/orange/')
+            imagelist = os.listdir('./baike/orange/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/orange/"
+            rootdir = "./baike/orange/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
     #LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -235,9 +235,9 @@ def baike1():
     elif genre == "柑桔植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/orange/')
+            imagelist = os.listdir('./baike/orange/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/orange/"
+            rootdir = "./baike/orange/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
     #LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -275,9 +275,9 @@ def baike1():
     elif genre == "桃植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/peach/')
+            imagelist = os.listdir('./baike/peach/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/peach/"
+            rootdir = "./baike/peach/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -318,9 +318,9 @@ def baike1():
     elif genre == "桃植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/peach/')
+            imagelist = os.listdir('./baike/peach/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/peach/"
+            rootdir = "./baike/peach/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -360,9 +360,9 @@ def baike1():
     elif genre == "辣椒植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/lajiao/')
+            imagelist = os.listdir('./baike/lajiao/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/lajiao/"
+            rootdir = "./baike/lajiao/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -401,9 +401,9 @@ def baike1():
     elif genre == "马铃薯植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/potato/')
+            imagelist = os.listdir('./baike/potato/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/potato/"
+            rootdir = "./baike/potato/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
@@ -444,9 +444,9 @@ def baike1():
     elif genre == "草莓植株":
         st.balloons()
         with col1:
-            imagelist = os.listdir('D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/strawberry/')
+            imagelist = os.listdir('./baike/strawberry/')
             print(imagelist)
-            rootdir = "D:/plants_disease_classify-master/plants_disease_classify_pytorch/baike/strawberry/"
+            rootdir = "./baike/strawberry/"
             for i in range(len(imagelist)):
                 image = Image.open(rootdir + imagelist[i])
                 # LABEL_NAMES = ["苹果健康", "苹果黑星病一般"]
