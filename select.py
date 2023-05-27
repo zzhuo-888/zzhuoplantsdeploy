@@ -23,7 +23,7 @@ def add_userdata(username, password, flag, number, mail):
     # df = conn.query('SELECT * FROM userstable WHERE username ="{users[username]}";')
     # st.write(df)
     c = conn.session
-    c.execute(text("SELECT * FROM usertable WHERE username = %s;", username=username))
+    c.execute(text("SELECT * FROM usertable WHERE username = %s;"), username=username)
     c.commit()
     return c
 
