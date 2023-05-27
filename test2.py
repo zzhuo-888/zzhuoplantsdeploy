@@ -30,7 +30,7 @@ def pridect( pmodel):
     :return:
     '''
     # 1. 读取图片
-    image = Image.open(imagePath)
+   # image = Image.open(imagePath)
     # 2. 进行缩放
   #  image = image.resize(config.img_height,config.img_weight)
     #image.show()
