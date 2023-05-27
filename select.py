@@ -19,13 +19,15 @@ def add_userdata(username, password, flag, number, mail):
 
     users = {'username': username, 'password': password, 'flag': flag, 'number': number, 'mail': mail}
     st.write(username)
-    # c.execute(text('SELECT username FROM userstable WHERE username =`username`;'))
-    # df = conn.query('SELECT * FROM userstable WHERE username ="{users[username]}";')
-    # st.write(df)
     c = conn.session
-    c.execute(text("SELECT * FROM usertable WHERE username = %s;"), username=username)
-    c.commit()
-    return c
+    #     c.execute(text('INSERT INTO userstable(username,password,flag,number,mail) VALUES(:username1,:password1,:flag1,:number1,:mail1);'),params=dict(username1=users['username'],password1=users['password'],flag1=users['flag'],number1=users['number'],mail1=users['mail']))
+    df=c.execute(text('SELECT username FROM userstable WHERE username = :username1;'),params=dict(username1=users['username']))
+    #df = conn.query('SELECT * FROM userstable WHERE username = :username1')
+    st.write(df)
+    # c = conn.session
+    # c.execute(text("SELECT * FROM usertable WHERE username = ? ;"), username=username)
+    # c.commit()
+    # return c
 
     # user = execute.first()
     #     df=conn.query('select * from usertable where username = ? and password > ?;',['admin','123'])
