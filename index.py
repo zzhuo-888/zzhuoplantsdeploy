@@ -55,7 +55,7 @@ def show_slove(dname1):##病虫害信息及防治措施
     dname = {'dname': dname1}
     data=conn.query('SELECT * FROM information WHERE dname=:dname1;',params=dict(dname1=dname['dname']))
     data = [tuple(x) for x in data.values]
-    st.write(data)
+    #st.write(data)
     return data
 def show_search():##所有浏览记录
     data=conn.query('SELECT * FROM search;')
@@ -305,23 +305,23 @@ def main():
                             if dname1 !='None':
                                 add_searchdata(username, datetimenow, dname1)
 
-                            for i in slove_data:
-                                st.warning(":sunny::sunny::sunny:已同步将您的农作物识别结果发送至您的邮箱，请注意查收。:sunny::sunny::sunny:")
 
-                                # print(i)
-                                dinfo = i[2]
-                                dsolve = i[3]
-                                st.success(dinfo)
-                                st.success(dsolve)
-
-                                datapess = {
-                                    'sender': "2577982484@qq.com",  # 发送者邮箱，自己用可写死
-                                    'password': "regdayyboktpeacc",  # 在开启SMTP服务后，可以生成授权码，此处为授权码
-                                    'subject': "农作物健康识别系统",  # 邮件主题名，没有违规文字都行
-                                }
-                                # st.write("slider", slider_val, "checkbox", checkbox_val)
-                                # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
-                                load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
+                                # st.warning(":sunny::sunny::sunny:已同步将您的农作物识别结果发送至您的邮箱，请注意查收。:sunny::sunny::sunny:")
+                                #
+                                # # print(i)
+                                # dinfo = i[2]
+                                # dsolve = i[3]
+                                # st.success(dinfo)
+                                # st.success(dsolve)
+                                #
+                                # datapess = {
+                                #     'sender': "2577982484@qq.com",  # 发送者邮箱，自己用可写死
+                                #     'password': "regdayyboktpeacc",  # 在开启SMTP服务后，可以生成授权码，此处为授权码
+                                #     'subject': "农作物健康识别系统",  # 邮件主题名，没有违规文字都行
+                                # }
+                                # # st.write("slider", slider_val, "checkbox", checkbox_val)
+                                # # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
+                                # load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
                         elif choice1=="识别记录查询":
                             # 其他用法和radio基本一致
                             allmanagedata1 = list(show_search())
