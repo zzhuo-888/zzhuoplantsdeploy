@@ -15,10 +15,11 @@ c=conn.session
 
 #def add_userdata(username, password):
 def add_userdata(username, password, flag, number, mail):
-    if len(conn.query('SELECT username FROM userstable WHERE username =`username`;'))==1:
+    users = {'username': username, 'password': password,'flag':flag,'number':number,'mail':mail}
+    if len(conn.query('SELECT username FROM userstable WHERE username =:username1;'), params=dict(username1=users['username']))==1:
         st.warning("用户名已存在，请更换一个新的用户名。")
     else:
-        users = {'username': username, 'password': password, 'flag': flag, 'number': number, 'mail': mail}
+       # users = {'username': username, 'password': password, 'flag': flag, 'number': number, 'mail': mail}
         # pet_owners = {'jerry': 'fish', 'barbara': 'cat', 'alex': 'puppy'}
         c = conn.session
         c.execute(text(
@@ -31,12 +32,13 @@ def add_userdata(username, password, flag, number, mail):
 
 
 def login_user(username,password):
-    data=conn.query('SELECT flag FROM userstable WHERE username =`username`;',ttl=600)
+    users={'username':username,'password':password}
+    data=conn.query('SELECT flag FROM userstable WHERE username =:username1;',params=dict(username1=users['username']))
     fdata = [tuple(x) for x in data.values]
     #if fdata!='':
     if(len(fdata)!=0):
-        if fdata[0][0]!='2' and len(conn.query('SELECT username FROM userstable WHERE username =`username`;'))!=0:
-            data=conn.query('SELECT * FROM userstable WHERE username =`username`AND password = `password`;',ttl=600)
+        if fdata[0][0]!='2' and len(conn.query('SELECT username FROM userstable WHERE username =:username1;',params=dict(username1=users['username'])))!=0:
+            data=conn.query('SELECT * FROM userstable WHERE username =:username1 AND password= :password1;',params=dict(username1=users['username'],password1=users['password']))
             #data=c.commit()
             data = [tuple(x) for x in data.values]
             return data
@@ -50,7 +52,8 @@ def view_all_users():
     data = [tuple(x) for x in data.values]
     return data
 def show_slove(dname1):##病虫害信息及防治措施
-    data=conn.query('SELECT * FROM information WHERE dname=`username`;')
+    dname = {'dname': dname1}
+    data=conn.query('SELECT * FROM information WHERE dname=:dname1;',params=dict(dname1=dname['dname']))
     data = [tuple(x) for x in data.values]
     return data
 def show_search():##所有浏览记录
@@ -61,6 +64,7 @@ def show_search():##所有浏览记录
     return data
 
 def change_users(users,pd,fg):
+    changes = {'username': users,'password':pd,'flag':fg}
    #print("数据111222是",password,username)
     if fg=="管理员用户":
         fg=0
@@ -68,11 +72,12 @@ def change_users(users,pd,fg):
         fg=1
     else:
         fg=2
-    c.execute(text('UPDATE userstable SET password =`pd`,flag= `fg`  WHERE username = `users` ;'))
+    c.execute(text('UPDATE userstable SET password =:pd,flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username'])))
     c.commit()
 
 def change_mail(users,number,mail):
-    c.execute(text('UPDATE userstable SET number =`number`,mail=`mail`  WHERE username = `users`;'))
+    changemail={'username':users,'number':number,'mail':mail}
+    c.execute(text('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username'])))
     c.commit()
     #data = c.fetchall()
     #print("数据111222是", data)
