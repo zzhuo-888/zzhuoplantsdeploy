@@ -16,7 +16,8 @@ c=conn.session
 #def add_userdata(username, password):
 def add_userdata(username, password, flag, number, mail):
     users = {'username': username, 'password': password,'flag':flag,'number':number,'mail':mail}
-    if len(conn.query('SELECT username FROM userstable WHERE username =:username1;'), params=dict(username1=users['username']))==1:
+    if len(conn.query('SELECT username FROM userstable WHERE username =:username1;', params=dict(username1=users['username']))==1:
+
         st.warning("用户名已存在，请更换一个新的用户名。")
     else:
        # users = {'username': username, 'password': password, 'flag': flag, 'number': number, 'mail': mail}
@@ -73,7 +74,7 @@ def change_users(users,pd,fg):
         fg=1
     else:
         fg=2
-    df=conn.query('UPDATE userstable SET password =:pd,flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
+    df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     #c.commit()
     return df
 
