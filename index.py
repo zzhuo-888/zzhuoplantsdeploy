@@ -16,7 +16,7 @@ c=conn.session
 #def add_userdata(username, password):
 def add_userdata(username, password, flag, number, mail):
     users = {'username': username, 'password': password,'flag':flag,'number':number,'mail':mail}
-    if len(conn.query('SELECT username FROM userstable WHERE username =:username1;', params=dict(username1=users['username']))==1:
+    if len(conn.query('SELECT username FROM userstable WHERE username =:username1;', params=dict(username1=users['username'])))==1:
 
         st.warning("用户名已存在，请更换一个新的用户名。")
     else:
