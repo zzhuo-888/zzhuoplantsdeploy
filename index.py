@@ -78,7 +78,7 @@ def change_users(users,pd,fg):
     else:
         fg=2
     changes = {'username': users, 'password': pd, 'flag': fg}
-    print(changes['username'],changes['password'],changes['flag'])
+    # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
     data=c.execute(text('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;'),
                   params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
@@ -92,6 +92,7 @@ def change_mail(users,number,mail):
     #df=conn.query('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
     data=c.execute(text('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;'),
                   params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
+
     c.commit()
 
     return data
@@ -487,9 +488,10 @@ def main():
                                                     allmanagedataflag[i] = shenfenchange
                                                     print(pdchange, shenfenchange)
                                                     print("密码", allmanagedatapd[i], "身份", allmanagedataflag[i])
-
+                                                    change_users(userchange, pdchange, shenfenchange)
                                                     break
-                            change_users(userchange,pdchange,shenfenchange)
+                            #change_users(userchange,pdchange,shenfenchange)
+
 
 
                     elif(logged_user[0][2]=='1' and shenfen=='普通用户登录'):#普通用户登录
