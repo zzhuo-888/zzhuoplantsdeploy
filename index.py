@@ -45,6 +45,8 @@ def login_user(username,password):
             data = [tuple(x) for x in data.values]
             st.write(data)
             if data[0][1]==users['password']:
+                st.write(data)
+                st.write(type(data))
                 return data
             else:
                 st.warning("账号密码输入错误，请重新登录。")
