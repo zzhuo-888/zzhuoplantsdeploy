@@ -77,17 +77,21 @@ def change_users(users,pd,fg):
         fg=1
     else:
         fg=2
-    df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
+    data=c.execute(text('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;'),
+                  params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
+    c.commit()
+    #df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     #c.commit()
-    return df
+    return data
 
 def change_mail(users,number,mail):
     changemail={'username':users,'number':number,'mail':mail}
-    df=conn.query('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
-    #c.commit()
-    #data = c.fetchall()
-    #print("数据111222是", data)
-    return df
+    #df=conn.query('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
+    data=c.execute(text('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;'),
+                  params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
+    c.commit()
+
+    return data
 def add_searchdata(username, datetimenow, plantname):
     searchs = {'username': username, 'datetime': datetimenow, 'plantname': plantname}
     data=c.execute(text('INSERT INTO search(user,datetime,plantdname) VALUES(:username1,:datetime1,:plantdname1);'),
