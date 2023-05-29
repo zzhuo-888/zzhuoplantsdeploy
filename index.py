@@ -603,8 +603,8 @@ def main():
                                 # st.write(logged_user1)
 
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0], logged_user[0], logged_user[1], logged_user[3],
-                                             logged_user[4], "普通用户"]
+                                    '个人信息': [time[0], logged_user[0][0], logged_user[0][1], logged_user[0][3],
+                                             logged_user[0][4], "普通用户"]
 
                                 }, index=['查询时间', '用户名', '密码', '手机号', '电子邮箱', '登录身份'])
 
