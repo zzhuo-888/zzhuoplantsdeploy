@@ -57,11 +57,7 @@ def view_all_users():
     data = conn.query('SELECT * from userstable;', ttl=600)
     data = [tuple(x) for x in data.values]
     return data
-def view_usermess(username,pasword):##仅用于登录后个人信息
-    users = {'username': username}
-    data = conn.query('SELECT * from userstable where username=:username2;', params=dict(username2=users['username']))
-    data = [tuple(x) for x in data.values]
-    return data
+
 def show_slove(dname1):##病虫害信息及防治措施
     dname = {'dname': dname1}
     data=conn.query('SELECT * FROM information WHERE dname=:dname1;',params=dict(dname1=dname['dname']))
@@ -582,9 +578,9 @@ def main():
                                 timenow = f'{timenow}'.split('.')[0]
                                 time=[]
                                 time.append(timenow)
-                                oneusermess=view_usermess(username,password)
+
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0], oneusermess[0][0],  oneusermess[0][1], oneusermess[0][3],  oneusermess[0][4],"普通用户"]
+                                    '个人信息': [time[0], logged_user[0][0],  logged_user[0][1], logged_user[0][3],  logged_user[0][4],"普通用户"]
 
                                 }, index=['查询时间','用户名', '密码', '手机号', '电子邮箱','登录身份'])
 
