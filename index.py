@@ -517,6 +517,7 @@ def main():
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
                             datetimenow = datetime.datetime.now()
                             datetimenow = f'{datetimenow}'.split('.')[0]
+                            datetimenow=list(datetimenow)
                             for i in len(datetimenow):
                                 flag=0
                                 if(flag==0 and datetimenow[i]==':'):
