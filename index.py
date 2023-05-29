@@ -42,7 +42,7 @@ def login_user(username,password):
         if fdata[0][0]!='2':
             #data=conn.query('SELECT * FROM userstable WHERE username =:username1 AND password= :password1;',params=dict(username1=users['username'],password1=users['password']))
             data = conn.query('SELECT * FROM userstable WHERE username =:username1 ;',
-                              dict(username1=users['username']))
+                              params=dict(username1=users['username']))
             data = [tuple(x) for x in data.values]
             st.write(data)
             if len(data)==1:
