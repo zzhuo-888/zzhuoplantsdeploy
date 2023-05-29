@@ -1,5 +1,5 @@
 import streamlit as st
-
+import pytz
 from firstpage import *
 from mail import *
 from opencv import *
@@ -515,7 +515,9 @@ def main():
                             # for row in slove_data:
                             #   print("ee12e")
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
-                            datetimenow = datetime.datetime.now()+8
+                            datetimenow = datetime.datetime.now(pytz.timezone("America/New_York"))
+
+
                             datetimenow = f'{datetimenow}'.split('.')[0]
                             # datetimenow=list(datetimenow)
                             # for i in range(len(datetimenow)):
