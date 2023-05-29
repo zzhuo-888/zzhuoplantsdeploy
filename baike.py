@@ -1,3 +1,4 @@
+import pytz
 import streamlit as st
 import os
 from PIL import Image
@@ -38,7 +39,7 @@ def baike1():
 
             #dbaike=st.session_state.date_time.date()
             dbaike=datetime.date.today()
-            tbaike=datetime.datetime.now()
+            tbaike=datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
            # print(st.session_state.date_time)
             #st.title(f'查询日期为 {dbaike}')
@@ -88,7 +89,7 @@ def baike1():
 
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -126,7 +127,7 @@ def baike1():
             moreinfo =["白粉病是一种农作物常见的病害，樱桃也会感染上白粉病，在感染上之后会在叶片出现一些白色状的粉状霉层，在一般的情况下叶片背面的白色粉状霉层比正面的多，然后再慢慢蔓延到果实，从而使果实的果面也出现白色粉状霉层，同时果实会出现表皮枯死、硬化、龟裂等症状，从而使樱桃出生早衰的现象，降低产量。 病害主要危害叶片，影响光合作用，削弱树势汇合成大粉斑，叶片大部分或全叶布满，重病时叶片前部出现白粉斑。病程后期叶片退绿、皱缩。"]
             #dbaike=st.session_state.date_time.date()
             dbaike=datetime.date.today()
-            tbaike=datetime.datetime.now()
+            tbaike=datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
            # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -174,7 +175,7 @@ def baike1():
              ]
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -215,7 +216,7 @@ def baike1():
                ]
             #dbaike=st.session_state.date_time.date()
             dbaike=datetime.date.today()
-            tbaike=datetime.datetime.now()
+            tbaike=datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
            # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -255,7 +256,7 @@ def baike1():
                ]
             #dbaike=st.session_state.date_time.date()
             dbaike=datetime.date.today()
-            tbaike=datetime.datetime.now()
+            tbaike=datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
            # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -297,7 +298,7 @@ def baike1():
             ]
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -340,7 +341,7 @@ def baike1():
             ]
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -381,7 +382,7 @@ def baike1():
             ]
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -424,7 +425,7 @@ def baike1():
             ]
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
@@ -465,7 +466,7 @@ def baike1():
             ]
             # dbaike=st.session_state.date_time.date()
             dbaike = datetime.date.today()
-            tbaike = datetime.datetime.now()
+            tbaike = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
             tbaike = f'{tbaike}'.split('.')[0]
             # print(st.session_state.date_time)
             st.title(f'查询日期为 {dbaike}')
