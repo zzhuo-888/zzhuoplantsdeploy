@@ -582,7 +582,7 @@ def main():
                                 # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
                                 load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
                         if choice2 == "信息修改":
-                            logged_user1 = {}
+                            logged_user1 = []
                             for i in range(5):
                                 a=str(logged_user[0][i])
                                 logged_user1.append(a)
