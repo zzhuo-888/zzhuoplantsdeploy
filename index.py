@@ -518,7 +518,7 @@ def main():
                             datetimenow = datetime.datetime.now()
                             datetimenow = f'{datetimenow}'.split('.')[0]
                             datetimenow=list(datetimenow)
-                            for i in len(datetimenow):
+                            for i in range(len(datetimenow)):
                                 flag=0
                                 if(flag==0 and datetimenow[i]==':'):
                                     datetimenow[i]='时'
