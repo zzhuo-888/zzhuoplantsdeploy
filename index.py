@@ -569,8 +569,6 @@ def main():
                         if choice2 == "信息修改":
                             # 其他用法和radio基本一致
                             #logged_user1=list(logged_user)
-
-
                             def personmanage():
                                 pd.set_option('max_colwidth', 200)
                                 timenow=datetime.datetime.now()
@@ -634,6 +632,7 @@ def main():
                                       # print(yanzhengma, yanzhengma1)
                                     if submitted_mail:
                                         if (mailnowyzm == mailnowyzm1):
+                                            st.write(logged_user[0][0], numnow, mailnow)
 
                                             change_mail(logged_user[0][0], numnow, mailnow)
                                         else:
