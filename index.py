@@ -37,7 +37,8 @@ def login_user(username,password):
     users={'username':username,'password':password}
     data=conn.query('SELECT flag FROM userstable WHERE username =:username1;',params=dict(username1=users['username']))
     fdata = [tuple(x) for x in data.values]
-    st.write(fdata)
+
+
     #if fdata!='':
     if(len(fdata)!=0):
         if fdata[0][0]!='2':
@@ -45,8 +46,7 @@ def login_user(username,password):
             data = [tuple(x) for x in data.values]
             st.write(data)
             if data[0][1]==users['password']:
-                st.write(data)
-                st.write(type(data))
+
                 return data
             else:
                 st.warning("账号密码输入错误，请重新登录。")
@@ -582,6 +582,9 @@ def main():
                                 # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
                                 load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
                         if choice2 == "信息修改":
+                            logged_user1 = {}
+                            for i in range(5):
+                                logged_user1.append(logged_user[0][0])
                             # 其他用法和radio基本一致
                             #logged_user1=list(logged_user)
                             def personmanage():
@@ -593,11 +596,12 @@ def main():
                                 time.append(timenow)
                                 # logged_user1=view_one_users(username)
                                 # st.write(logged_user1)
+
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0], logged_user[0][0],  logged_user[0][1], logged_user[0][3],  logged_user[0][4],"普通用户"]
+                                    '个人信息': [time[0], logged_user1[0], logged_user1[1], logged_user1[3],
+                                             logged_user1[4], "普通用户"]
 
-                                }, index=['查询时间','用户名', '密码', '手机号', '电子邮箱','登录身份'])
-
+                                }, index=['查询时间', '用户名', '密码', '手机号', '电子邮箱', '登录身份'])
 
                                 return data_frame
 
@@ -631,6 +635,7 @@ def main():
                                         else:  ##若一致则修改密码
 
                                             change_users(logged_user[0][0], pdchange, "普通用户")
+                                            logged_user1[1]=pdchange
 
                             with col3:
                                 with st.form("my_forms2"):
@@ -654,6 +659,8 @@ def main():
                                         if (mailnowyzm == mailnowyzm1):
 
                                             change_mail(logged_user[0][0], numnow, mailnow)
+                                            logged_user1[3] = numnow
+                                            logged_user1[4] = mailnow
 
                                         else:
                                             st.sidebar.warning("邮箱验证码错误，请检查后重试。")
