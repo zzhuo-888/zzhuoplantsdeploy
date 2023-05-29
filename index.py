@@ -118,7 +118,7 @@ def change_users_use(users,pd):
 
     c.commit()
 
- 
+
 
 def change_mail(users,number,mail):
     changemail={'username':users,'number':number,'mail':mail}
@@ -310,8 +310,6 @@ def main():
                         if choice1=="用户提问栏":
                             # 其他用法和radio基本一致
 
-
-
                             def personmanage():
 
                                 data_frame = pd.DataFrame({
@@ -408,8 +406,6 @@ def main():
 
                             showallmanageser(allmanagedatanum, allmanagedatatime, allmanagedatauserser,
                                              allmanagedataplantser)
-
-
 
                         elif choice1=="权限管理":
                             # 其他用法和radio基本一致
@@ -560,8 +556,6 @@ def main():
                             #   print("ee12e")
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
                             datetimenow = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
-
-
                             datetimenow = f'{datetimenow}'.split('.')[0]
                             # datetimenow=list(datetimenow)
                             # for i in range(len(datetimenow)):
@@ -588,18 +582,14 @@ def main():
                                 st.success(dsolve)
 
                                 datapess = {
-                                    'sender': "2577982484@qq.com",  # 发送者邮箱，自己用可写死
+                                    'sender': "2577982484@qq.com",  # 发送者邮箱，
                                     'password': "regdayyboktpeacc",  # 在开启SMTP服务后，可以生成授权码，此处为授权码
-                                    'subject': "农作物健康识别系统",  # 邮件主题名，没有违规文字都行
+                                    'subject': "农作物健康识别系统",  # 邮件主题名
                                 }
                                 # st.write("slider", slider_val, "checkbox", checkbox_val)
                                 # load_message(data, receiver, mailusername, diseasename, diseaseinfo, diseasesolve)
                                 load_message(datapess, logged_user[0][4], logged_user[0][0], dname1, dinfo, dsolve)
                         if choice2 == "信息修改":
-                            logged_user1 = []
-                            for i in range(5):
-                                a=str(logged_user[0][i])
-                                logged_user1.append(a)
                             # 其他用法和radio基本一致
                             #logged_user1=list(logged_user)
                             def personmanage():
@@ -613,13 +603,12 @@ def main():
                                 # st.write(logged_user1)
 
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0], logged_user1[0], logged_user1[1], logged_user1[3],
-                                             logged_user1[4], "普通用户"]
+                                    '个人信息': [time[0], logged_user[0], logged_user[1], logged_user[3],
+                                             logged_user[4], "普通用户"]
 
                                 }, index=['查询时间', '用户名', '密码', '手机号', '电子邮箱', '登录身份'])
 
                                 return data_frame
-
 
                             # st.dataframe(df)
                             df = personmanage()
@@ -631,8 +620,6 @@ def main():
 
                                     st.dataframe(df)
                                     submittedshua = st.form_submit_button("刷新")
-
-
 
                             with col2:
                                 with st.form("my_forms1"):
@@ -651,9 +638,7 @@ def main():
                                         if pdchange != pd2change:
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
-                                            logged_user1[1] = pdchange
-                                            change_users_use(logged_user[0][0], pdchange)
-
+                                            change_users(logged_user[0][0], pdchange,"普通用户")
 
                             with col3:
                                 with st.form("my_forms2"):
@@ -675,10 +660,8 @@ def main():
                                       # print(yanzhengma, yanzhengma1)
                                     if submitted_mail:
                                         if (mailnowyzm == mailnowyzm1):
-                                            logged_user1[3] = numnow
-                                            logged_user1[4] = mailnow
-                                            st.write(logged_user1)
-                                            change_mail(logged_user1[0], numnow, mailnow)
+
+                                            change_mail(logged_user[0][0], numnow, mailnow)
 
 
 
