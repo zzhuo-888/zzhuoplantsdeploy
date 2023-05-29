@@ -304,7 +304,7 @@ def main():
                             # for row in slove_data:
                             #   print("ee12e")
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
-                            datetimenow = datetime.datetime.now()
+                            datetimenow = datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
                             datetimenow = f'{datetimenow}'.split('.')[0]
                             if dname1 !='None':
                                 add_searchdata(username, datetimenow, dname1)
