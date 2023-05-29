@@ -40,14 +40,10 @@ def login_user(username,password):
     #if fdata!='':
     if(len(fdata)!=0):
         if fdata[0][0]!='2':
-            #data=conn.query('SELECT * FROM userstable WHERE username =:username1 AND password= :password1;',params=dict(username1=users['username'],password1=users['password']))
-            data = conn.query('SELECT * FROM userstable WHERE username =:username1 ;',
-                              params=dict(username1=users['username']))
+            data=conn.query('SELECT * FROM userstable WHERE username =:username1 AND password= :password1;',params=dict(username1=users['username'],password1=users['password']))
             data = [tuple(x) for x in data.values]
             st.write(data)
             if len(data)==1:
-                data = [tuple(x) for x in data.values]
-
                 return data
             else:
                 st.warning("账号密码输入错误，请重新登录。")
