@@ -44,7 +44,7 @@ def login_user(username,password):
             data=conn.query('SELECT * FROM userstable WHERE username =:username1;',params=dict(username1=users['username']))
             data = [tuple(x) for x in data.values]
             st.write(data)
-            if data[0][1]==users[password]:
+            if data[0][1]==users['password']:
                 return data
             else:
                 st.warning("账号密码输入错误，请重新登录。")
