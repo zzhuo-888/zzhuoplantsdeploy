@@ -118,7 +118,7 @@ def change_users_use(users,pd):
 
     c.commit()
 
-    return data
+ 
 
 def change_mail(users,number,mail):
     changemail={'username':users,'number':number,'mail':mail}
