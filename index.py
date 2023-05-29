@@ -525,8 +525,7 @@ def main():
                                     flag=1
                                 elif(flag==1 and datetimenow[i]==':'):
                                     datetimenow[i]='分'
-                            miao='秒'
-                            datetimenow=datetimenow+miao
+
 
                             add_searchdata(username, datetimenow, dname1)
 
