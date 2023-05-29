@@ -78,6 +78,7 @@ def change_users(users,pd,fg):
     else:
         fg=2
     changes = {'username': users, 'password': pd, 'flag': fg}
+    st.write(changes)
     # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
     data=c.execute(text('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;'),
@@ -606,7 +607,6 @@ def main():
                                         if pdchange != pd2change:
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
-                                            st.write(logged_user[0][0],pdchange,"普通用户")
                                             change_users(logged_user[0][0], pdchange, "普通用户")
                             with col3:
                                 with st.form("my_forms2"):
