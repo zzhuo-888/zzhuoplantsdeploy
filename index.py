@@ -570,6 +570,7 @@ def main():
                             # 其他用法和radio基本一致
                             #logged_user1=list(logged_user)
                             def personmanage():
+                                logged_user = login_user(username, password)
                                 pd.set_option('max_colwidth', 200)
                                 timenow=datetime.datetime.now()
                                 timenow = f'{timenow}'.split('.')[0]
