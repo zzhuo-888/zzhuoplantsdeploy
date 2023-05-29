@@ -517,7 +517,18 @@ def main():
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
                             datetimenow = datetime.datetime.now()
                             datetimenow = f'{datetimenow}'.split('.')[0]
+                            for i in len(datetimenow):
+                                flag=0
+                                if(flag==0 and datetimenow[i]==':'):
+                                    datetimenow[i]='时'
+                                    flag=1
+                                elif(flag==1 and datetimenow[i]==':'):
+                                    datetimenow[i]='分'
+                            miao='秒'
+                            datetimenow=datetimenow+miao
+
                             add_searchdata(username, datetimenow, dname1)
+
 
                             for i in slove_data:
                                 st.warning(":sunny::sunny::sunny:已同步将您的农作物识别结果发送至您的邮箱，请注意查收。:sunny::sunny::sunny:")
