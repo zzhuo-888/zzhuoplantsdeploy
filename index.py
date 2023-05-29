@@ -41,7 +41,7 @@ def login_user(username,password):
         if fdata[0][0]!='2':
             data=conn.query('SELECT * FROM userstable WHERE username =:username1 AND password= :password1;',params=dict(username1=users['username'],password1=users['password']))
             #data=c.commit()
-            print(data)
+
             if len(data)==1:
                 data = [tuple(x) for x in data.values]
                 return data
@@ -82,8 +82,8 @@ def change_users(users,pd,fg):
     st.write(changes)
     # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
-    data=c.execute(text('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;'),
-                  params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
+    data=c.execute(text('UPDATE userstable SET password =:pd   WHERE username = :users ;'),
+                  params=dict(pd=changes['password'],users=changes['username']))
     c.commit()
     #df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     #c.commit()
