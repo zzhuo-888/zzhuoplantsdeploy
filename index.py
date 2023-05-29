@@ -660,9 +660,10 @@ def main():
                                         if (mailnowyzm == mailnowyzm1):
                                             logged_user1[3] = numnow
                                             logged_user1[4] = mailnow
-                                            change_mail(logged_user[0][0], numnow, mailnow)
+                                            st.write(logged_user1)
+                                            change_mail(logged_user1[0], numnow, mailnow)
 
-                                           
+
 
                                         else:
                                             st.sidebar.warning("邮箱验证码错误，请检查后重试。")
