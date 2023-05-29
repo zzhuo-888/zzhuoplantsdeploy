@@ -82,8 +82,10 @@ def change_users(users,pd,fg):
     st.write(changes)
     # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
-    data=c.execute(text('UPDATE userstable SET password =:pd and flag=:fg  WHERE username = :users ;'),
-                  params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
+    c.execute(text('UPDATE userstable SET password =:pd   WHERE username = :users ;'),
+                  params=dict(pd=changes['password'],users=changes['username']))
+    data = c.execute(text('UPDATE userstable SET flag =:fg   WHERE username = :users ;'),
+                  params=dict(fg=changes['flag'], users=changes['username']))
     c.commit()
     #df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     #c.commit()
