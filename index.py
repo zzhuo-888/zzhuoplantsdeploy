@@ -79,7 +79,7 @@ def change_users(users,pd,fg):
     else:
         fg=2
     changes = {'username': users, 'password': pd, 'flag': fg}
-    st.write(changes)
+    #st.write(changes)
     # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
     c.execute(text('UPDATE userstable SET password =:pd   WHERE username = :users ;'),
