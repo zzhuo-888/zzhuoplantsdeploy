@@ -584,7 +584,8 @@ def main():
                         if choice2 == "信息修改":
                             logged_user1 = {}
                             for i in range(5):
-                                logged_user1.append(logged_user[0][0])
+                                a=str(logged_user[0][i])
+                                logged_user1.append(a)
                             # 其他用法和radio基本一致
                             #logged_user1=list(logged_user)
                             def personmanage():
