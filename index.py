@@ -606,7 +606,7 @@ def main():
 
                                 return data_frame
 
-                            df = personmanage()
+
                             # st.dataframe(df)
 
                             col1, col2,col3 = st.columns([30,33,37])
@@ -614,10 +614,10 @@ def main():
                                 #df.set_column_width(columns=["个人信息"], width=100)
                                 with st.form("my_forms"):
                                     st.subheader(":boom:当前用户信息:boom:")
+                                    df = personmanage()
                                     st.dataframe(df)
                                     submittedshua = st.form_submit_button("刷新")
-                                    if submittedshua:
-                                        st.dataframe(df)
+
 
                             with col2:
                                 with st.form("my_forms1"):
