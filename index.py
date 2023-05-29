@@ -91,10 +91,14 @@ def change_users(users,pd,fg):
     #st.write(changes)
     # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
-    c.execute(text('UPDATE userstable SET password =:pd   WHERE username = :users ;'),
+
+
+    c.execute(text('UPDATE userstable SET flag =:fg   WHERE username = :users ;'),
+          params=dict(fg=changes['flag'], users=changes['username']))
+    c.commit()
+    data=c.execute(text('UPDATE userstable SET password =:pd   WHERE username = :users ;'),
                   params=dict(pd=changes['password'],users=changes['username']))
-    data = c.execute(text('UPDATE userstable SET flag =:fg   WHERE username = :users ;'),
-                  params=dict(fg=changes['flag'], users=changes['username']))
+
     c.commit()
     #df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     #c.commit()
@@ -106,6 +110,7 @@ def change_mail(users,number,mail):
     c = conn.session
     c.execute(text('UPDATE userstable SET number =:number  WHERE username = :users;'),
                   params=dict(number=changemail['number'],users=changemail['username']))
+    c.commit()
     data=c.execute(text('UPDATE userstable SET mail=:mail  WHERE username = :users;'),
                   params=dict(mail=changemail['mail'],users=changemail['username']))
     c.commit()
