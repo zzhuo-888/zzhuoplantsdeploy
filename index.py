@@ -584,10 +584,10 @@ def main():
                                 timenow = f'{timenow}'.split('.')[0]
                                 time=[]
                                 time.append(timenow)
-                                logged_user1=view_one_users(username)
-                                st.write(logged_user1)
+                                # logged_user1=view_one_users(username)
+                                # st.write(logged_user1)
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0], logged_user1[0][0],  logged_user1[0][1], logged_user1[0][3],  logged_user1[0][4],"普通用户"]
+                                    '个人信息': [time[0], logged_user[0][0],  logged_user[0][1], logged_user[0][3],  logged_user[0][4],"普通用户"]
 
                                 }, index=['查询时间','用户名', '密码', '手机号', '电子邮箱','登录身份'])
 
@@ -622,7 +622,9 @@ def main():
                                         if pdchange != pd2change:
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
+
                                             change_users(logged_user[0][0], pdchange, "普通用户")
+                                            logged_user[0][1] = pdchange
                             with col3:
                                 with st.form("my_forms2"):
                                     st.subheader(":boom:更新手机号及电子邮箱:boom:")
@@ -645,6 +647,8 @@ def main():
                                         if (mailnowyzm == mailnowyzm1):
 
                                             change_mail(logged_user[0][0], numnow, mailnow)
+                                            logged_user[0][3] = numnow
+                                            logged_user[0][4] = mailnow
                                         else:
                                             st.sidebar.warning("邮箱验证码错误，请检查后重试。")
 
