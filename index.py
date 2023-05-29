@@ -57,6 +57,13 @@ def view_all_users():
     data = conn.query('SELECT * from userstable;', ttl=600)
     data = [tuple(x) for x in data.values]
     return data
+def view_one_users(username):
+    users = {'username': username}
+    data = conn.query('SELECT * FROM userstable WHERE username =:username1;',
+                      params=dict(username1=users['username']))
+
+    data = [tuple(x) for x in data.values]
+    return data
 
 def show_slove(dname1):##病虫害信息及防治措施
     dname = {'dname': dname1}
@@ -349,7 +356,6 @@ def main():
                             for i in range(len(allmanagedata1)):  ###获取为元组类型，需转换为列表
                                 allmanagedata1[i] = list(allmanagedata1[i])
                             print(allmanagedata1)
-
                             allmanagedatanum = []  ##所有编号数据
                             for i in range(len(allmanagedata1)):
                                 allmanagedatanum.append(allmanagedata1[i][0])
@@ -578,9 +584,9 @@ def main():
                                 timenow = f'{timenow}'.split('.')[0]
                                 time=[]
                                 time.append(timenow)
-
+                                logged_user1=view_one_users(username)
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0], logged_user[0][0],  logged_user[0][1], logged_user[0][3],  logged_user[0][4],"普通用户"]
+                                    '个人信息': [time[0], logged_user1[0][0],  logged_user1[0][1], logged_user1[0][3],  logged_user1[0][4],"普通用户"]
 
                                 }, index=['查询时间','用户名', '密码', '手机号', '电子邮箱','登录身份'])
 
@@ -615,7 +621,6 @@ def main():
                                         if pdchange != pd2change:
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
-                                            st.write(logged_user[0][0], pdchange, "普通用户")
                                             change_users(logged_user[0][0], pdchange, "普通用户")
                             with col3:
                                 with st.form("my_forms2"):
@@ -637,7 +642,6 @@ def main():
                                       # print(yanzhengma, yanzhengma1)
                                     if submitted_mail:
                                         if (mailnowyzm == mailnowyzm1):
-                                            st.write(logged_user[0][0], numnow, mailnow)
 
                                             change_mail(logged_user[0][0], numnow, mailnow)
                                         else:
