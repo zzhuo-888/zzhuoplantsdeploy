@@ -32,6 +32,7 @@ def add_userdata(username, password, flag, number, mail):
         st.info("请在左侧选择“登录”选项进行登录。")
 
 
+
 def login_user(username,password):
     users={'username':username,'password':password}
     data=conn.query('SELECT flag FROM userstable WHERE username =:username1;',params=dict(username1=users['username']))
@@ -54,6 +55,11 @@ def login_user(username,password):
 
 def view_all_users():
     data = conn.query('SELECT * from userstable;', ttl=600)
+    data = [tuple(x) for x in data.values]
+    return data
+def view_usermess(username):##仅用于登录后个人信息
+    users = {'username': username}
+    data = conn.query('SELECT * from userstable where username=:username2;', params=dict(username2=users['username']))
     data = [tuple(x) for x in data.values]
     return data
 def show_slove(dname1):##病虫害信息及防治措施
@@ -570,14 +576,15 @@ def main():
                             # 其他用法和radio基本一致
                             #logged_user1=list(logged_user)
                             def personmanage():
-                                logged_user = login_user(username, password)
+
                                 pd.set_option('max_colwidth', 200)
-                                timenow=datetime.datetime.now()
+                                timenow=datetime.datetime.now(pytz.timezone("Asia/Shanghai"))
                                 timenow = f'{timenow}'.split('.')[0]
                                 time=[]
                                 time.append(timenow)
+                                oneusermess=view_usermess(username)
                                 data_frame = pd.DataFrame({
-                                    '个人信息': [time[0],logged_user[0][0], logged_user[0][1], logged_user[0][3], logged_user[0][4],"普通用户"]
+                                    '个人信息': [time[0], oneusermess[0][0],  oneusermess[0][1], oneusermess[0][3],  oneusermess[0][4],"普通用户"]
 
                                 }, index=['查询时间','用户名', '密码', '手机号', '电子邮箱','登录身份'])
 
@@ -594,6 +601,7 @@ def main():
                                     st.subheader(":boom:当前用户信息:boom:")
                                     st.dataframe(df)
                                     submitted = st.form_submit_button("刷新")
+
                             with col2:
                                 with st.form("my_forms1"):
                                     #st.write(":boom:修改用户密码:boom:")
