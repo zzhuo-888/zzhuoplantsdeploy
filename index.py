@@ -612,6 +612,7 @@ def main():
                                         if pdchange != pd2change:
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
+                                            st.write(logged_user[0][0], pdchange, "普通用户")
                                             change_users(logged_user[0][0], pdchange, "普通用户")
                             with col3:
                                 with st.form("my_forms2"):
