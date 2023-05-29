@@ -90,8 +90,8 @@ def change_mail(users,number,mail):
     return df
 def add_searchdata(username, datetimenow, plantname):
     searchs = {'username': username, 'datetime': datetimenow, 'plantname': plantname}
-    data=c.execute(text('INSERT INTO search(user,datatime,plantdname) VALUES(:username1,:datatime1,:plantdname1);'),
-                  params=dict(username1=searchs['username'], datatime1=searchs['datetime'], plantdname1=searchs['plantname']))
+    data=c.execute(text('INSERT INTO search(user,datetime,plantdname) VALUES(:username1,:datetime1,:plantdname1);'),
+                  params=dict(username1=searchs['username'], datetime1=searchs['datetime'], plantdname1=searchs['plantname']))
     c.commit()
     return data
 # Initialize connection.
@@ -517,17 +517,17 @@ def main():
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
                             datetimenow = datetime.datetime.now()
                             datetimenow = f'{datetimenow}'.split('.')[0]
-                            datetimenow=list(datetimenow)
-                            for i in range(len(datetimenow)):
-                                flag=0
-                                if(flag==0 and datetimenow[i]==':'):
-                                    datetimenow[i]='时'
-                                    flag=1
-                                elif(flag==1 and datetimenow[i]==':'):
-                                    datetimenow[i]='分'
-                            datetimenow.append('秒')
-                            datetimenow= ''.join(datetimenow)
-      
+                            # datetimenow=list(datetimenow)
+                            # for i in range(len(datetimenow)):
+                            #     flag=0
+                            #     if(flag==0 and datetimenow[i]==':'):
+                            #         datetimenow[i]='时'
+                            #         flag=1
+                            #     elif(flag==1 and datetimenow[i]==':'):
+                            #         datetimenow[i]='分'
+                            # datetimenow.append('秒')
+                            # datetimenow= ''.join(datetimenow)
+                            #
                             add_searchdata(username, datetimenow, dname1)
 
 
