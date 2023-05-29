@@ -79,7 +79,7 @@ def show_search():##所有浏览记录
     #data=c.fetchall()
     #print("数据是",data)
     return data
-
+###管理员端修改
 def change_users(users,pd,fg):
 
    #print("数据111222是",password,username)
@@ -90,7 +90,7 @@ def change_users(users,pd,fg):
     else:
         fg=2
     changes = {'username': users, 'password': pd, 'flag': fg}
-    #st.write(changes)
+    st.write(changes)
     # print(changes['username'],changes['password'],changes['flag'])
     c = conn.session
 
@@ -104,6 +104,20 @@ def change_users(users,pd,fg):
     c.commit()
     #df=conn.query('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;',params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     #c.commit()
+    return data
+###用户端修改
+def change_users_use(users,pd):
+
+    changes = {'username': users, 'password': pd}
+    st.write(changes)
+    # print(changes['username'],changes['password'],changes['flag'])
+    c = conn.session
+
+    data=c.execute(text('UPDATE userstable SET password =:pd   WHERE username = :users ;'),
+                  params=dict(pd=changes['password'],users=changes['username']))
+
+    c.commit()
+
     return data
 
 def change_mail(users,number,mail):
@@ -608,18 +622,16 @@ def main():
 
 
                             # st.dataframe(df)
-
+                            df = personmanage()
                             col1, col2,col3 = st.columns([30,33,37])
                             with col1:
                                 #df.set_column_width(columns=["个人信息"], width=100)
                                 with st.form("my_forms"):
                                     st.subheader(":boom:当前用户信息:boom:")
-                                    df = personmanage()
+
                                     st.dataframe(df)
                                     submittedshua = st.form_submit_button("刷新")
-                                    if submittedshua:
-                                        df = personmanage()
-                                        st.dataframe(df)
+
 
 
                             with col2:
@@ -640,7 +652,7 @@ def main():
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
                                             logged_user1[1] = pdchange
-                                            change_users(logged_user[0][0], pdchange, "普通用户")
+                                            change_users_use(logged_user[0][0], pdchange)
 
 
                             with col3:
