@@ -617,6 +617,9 @@ def main():
                                     df = personmanage()
                                     st.dataframe(df)
                                     submittedshua = st.form_submit_button("刷新")
+                                    if submittedshua:
+                                        df = personmanage()
+                                        st.dataframe(df)
 
 
                             with col2:
