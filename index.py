@@ -515,7 +515,7 @@ def main():
                             # for row in slove_data:
                             #   print("ee12e")
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
-                            datetimenow = datetime.datetime.now(pytz.timezone("America/New_York"))
+                            datetimenow = datetime.datetime.now(pytz.timezone("Asia/Beijing"))
 
 
                             datetimenow = f'{datetimenow}'.split('.')[0]
