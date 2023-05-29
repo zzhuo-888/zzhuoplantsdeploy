@@ -615,7 +615,9 @@ def main():
                                 with st.form("my_forms"):
                                     st.subheader(":boom:当前用户信息:boom:")
                                     st.dataframe(df)
-                                    submitted = st.form_submit_button("刷新")
+                                    submittedshua = st.form_submit_button("刷新")
+                                    if submittedshua:
+                                        st.dataframe(df)
 
                             with col2:
                                 with st.form("my_forms1"):
