@@ -94,9 +94,11 @@ def change_users(users,pd,fg):
 def change_mail(users,number,mail):
     changemail={'username':users,'number':number,'mail':mail}
     #df=conn.query('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;',params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
-    data=c.execute(text('UPDATE userstable SET number =:number,mail=:mail  WHERE username = :users;'),
-                  params=dict(number=changemail['number'],mail=changemail['mail'],users=changemail['username']))
-
+    c = conn.session
+    c.execute(text('UPDATE userstable SET number =:number  WHERE username = :users;'),
+                  params=dict(number=changemail['number'],users=changemail['username']))
+    data=c.execute(text('UPDATE userstable SET mail=:mail  WHERE username = :users;'),
+                  params=dict(mail=changemail['mail'],users=changemail['username']))
     c.commit()
 
     return data
