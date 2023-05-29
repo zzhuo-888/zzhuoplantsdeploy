@@ -69,7 +69,7 @@ def show_search():##所有浏览记录
     return data
 
 def change_users(users,pd,fg):
-    changes = {'username': users,'password':pd,'flag':fg}
+
    #print("数据111222是",password,username)
     if fg=="管理员用户":
         fg=0
@@ -77,6 +77,7 @@ def change_users(users,pd,fg):
         fg=1
     else:
         fg=2
+    changes = {'username': users, 'password': pd, 'flag': fg}
     data=c.execute(text('UPDATE userstable SET password =:pd and flag= :fg  WHERE username = :users ;'),
                   params=dict(pd=changes['password'],fg=changes['flag'],users=changes['username']))
     c.commit()
