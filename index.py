@@ -517,7 +517,7 @@ def main():
                             # print("%d--%d" % (cloumn[0], cloumn[1]))
                             datetimenow = datetime.datetime.now()
                             datetimenow = f'{datetimenow}'.split('.')[0]
-                            datetimenow=str(datetimenow)
+                            datetimenow=list(datetimenow)
                             for i in range(len(datetimenow)):
                                 flag=0
                                 if(flag==0 and datetimenow[i]==':'):
@@ -525,10 +525,9 @@ def main():
                                     flag=1
                                 elif(flag==1 and datetimenow[i]==':'):
                                     datetimenow[i]='分'
-                            miao='秒'
-                            datetimenow=datetimenow+miao
-
-
+                            datetimenow.append('秒')
+                            datetimenow= ''.join(datetimenow)
+      
                             add_searchdata(username, datetimenow, dname1)
 
 
