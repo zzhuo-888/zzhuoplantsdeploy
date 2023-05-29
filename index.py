@@ -624,7 +624,9 @@ def main():
                                         else:  ##若一致则修改密码
 
                                             change_users(logged_user[0][0], pdchange, "普通用户")
+                                            logged_user = list(logged_user)
                                             logged_user[0][1] = pdchange
+                                            logged_user = tuple(logged_user)
                             with col3:
                                 with st.form("my_forms2"):
                                     st.subheader(":boom:更新手机号及电子邮箱:boom:")
@@ -647,8 +649,10 @@ def main():
                                         if (mailnowyzm == mailnowyzm1):
 
                                             change_mail(logged_user[0][0], numnow, mailnow)
+                                            logged_user=list(logged_user)
                                             logged_user[0][3] = numnow
                                             logged_user[0][4] = mailnow
+                                            logged_user=tuple(logged_user)
                                         else:
                                             st.sidebar.warning("邮箱验证码错误，请检查后重试。")
 
