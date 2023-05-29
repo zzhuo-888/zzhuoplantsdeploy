@@ -57,7 +57,7 @@ def view_all_users():
     data = conn.query('SELECT * from userstable;', ttl=600)
     data = [tuple(x) for x in data.values]
     return data
-def view_usermess(username):##仅用于登录后个人信息
+def view_usermess(username,pasword):##仅用于登录后个人信息
     users = {'username': username}
     data = conn.query('SELECT * from userstable where username=:username2;', params=dict(username2=users['username']))
     data = [tuple(x) for x in data.values]
@@ -582,7 +582,7 @@ def main():
                                 timenow = f'{timenow}'.split('.')[0]
                                 time=[]
                                 time.append(timenow)
-                                oneusermess=view_usermess(username)
+                                oneusermess=view_usermess(username,password)
                                 data_frame = pd.DataFrame({
                                     '个人信息': [time[0], oneusermess[0][0],  oneusermess[0][1], oneusermess[0][3],  oneusermess[0][4],"普通用户"]
 
