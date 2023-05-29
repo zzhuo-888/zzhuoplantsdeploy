@@ -585,6 +585,7 @@ def main():
                                 time=[]
                                 time.append(timenow)
                                 logged_user1=view_one_users(username)
+                                st.write(logged_user1)
                                 data_frame = pd.DataFrame({
                                     '个人信息': [time[0], logged_user1[0][0],  logged_user1[0][1], logged_user1[0][3],  logged_user1[0][4],"普通用户"]
 
