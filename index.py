@@ -634,9 +634,9 @@ def main():
                                         if pdchange != pd2change:
                                             st.write(":exclamation::exclamation::exclamation:两次输入的密码不一致")
                                         else:  ##若一致则修改密码
-
+                                            logged_user1[1] = pdchange
                                             change_users(logged_user[0][0], pdchange, "普通用户")
-                                            logged_user1[1]=pdchange
+
 
                             with col3:
                                 with st.form("my_forms2"):
@@ -658,10 +658,11 @@ def main():
                                       # print(yanzhengma, yanzhengma1)
                                     if submitted_mail:
                                         if (mailnowyzm == mailnowyzm1):
-
-                                            change_mail(logged_user[0][0], numnow, mailnow)
                                             logged_user1[3] = numnow
                                             logged_user1[4] = mailnow
+                                            change_mail(logged_user[0][0], numnow, mailnow)
+
+                                           
 
                                         else:
                                             st.sidebar.warning("邮箱验证码错误，请检查后重试。")
