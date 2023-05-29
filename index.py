@@ -37,6 +37,7 @@ def login_user(username,password):
     users={'username':username,'password':password}
     data=conn.query('SELECT flag FROM userstable WHERE username =:username1;',params=dict(username1=users['username']))
     fdata = [tuple(x) for x in data.values]
+    st.write(fdata)
     #if fdata!='':
     if(len(fdata)!=0):
         if fdata[0][0]!='2':
