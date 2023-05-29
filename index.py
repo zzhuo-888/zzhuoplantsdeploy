@@ -650,6 +650,7 @@ def main():
 
                                             change_mail(logged_user[0][0], numnow, mailnow)
                                             logged_user=list(logged_user)
+                                            st.write(type(logged_user))
                                             logged_user[0][3] = numnow
                                             logged_user[0][4] = mailnow
                                             logged_user=tuple(logged_user)
